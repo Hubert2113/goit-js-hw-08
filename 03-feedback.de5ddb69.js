@@ -16,4 +16,4 @@ var n,t=arguments[3],r=require("buffer").Buffer;(function(){var r,e=200,u="Unsup
 },{"buffer":"dskh"}],"TTyb":[function(require,module,exports) {
 "use strict";var e=t(require("lodash"));function t(e){return e&&e.__esModule?e:{default:e}}const a=document.querySelector("form.feedback-form"),l={email:null,message:null};a.elements.email.addEventListener("input",e.default.throttle(e=>{try{l.email=e.currentTarget.value,localStorage.setItem("feedback-from-state",JSON.stringify(l))}catch{}},500)),a.elements.message.addEventListener("input",e.default.throttle(e=>{try{l.message=e.currentTarget.value,localStorage.setItem("feedback-from-state",JSON.stringify(l))}catch{}},500)),a.lastElementChild.addEventListener("click",e=>{e.preventDefault(),localStorage.clear(),a.reset(),console.log(l)});let r=JSON.parse(localStorage.getItem("feedback-from-state"));try{a.elements.email.value=r.email,a.elements.message.value=r.message}catch{}
 },{"lodash":"B1iE"}]},{},["TTyb"], null)
-//# sourceMappingURL=/parcel-project-template/03-feedback.de5ddb69.js.map
+//# sourceMappingURL=/goit-js-hw-08/03-feedback.de5ddb69.js.map
