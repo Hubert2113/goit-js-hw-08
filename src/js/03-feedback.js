@@ -8,28 +8,25 @@ const feedbackFromState = {
 };
 
 $form.elements.email.addEventListener("input", _.throttle((ev) => {
-    try {
-        feedbackFromState.email = ev.currentTarget.value;
-        localStorage.setItem('feedback-from-state', JSON.stringify(feedbackFromState));
-    }catch{}
+    feedbackFromState.email = ev.target.value;
+    localStorage.setItem('feedback-from-state', JSON.stringify(feedbackFromState));
 }, 500));
 
 $form.elements.message.addEventListener("input", _.throttle((ev) => {
-    try {
-        feedbackFromState.message = ev.currentTarget.value;
+        feedbackFromState.message = ev.target.value;
         localStorage.setItem("feedback-from-state", JSON.stringify(feedbackFromState));
-    }catch{}
 }, 500));
 
 $form.lastElementChild.addEventListener("click", (ev) => {
-        ev.preventDefault();
-        localStorage.clear();
-        $form.reset();
-        console.log(feedbackFromState);
+    ev.preventDefault();
+    localStorage.clear();
+    $form.reset();
+    console.log(feedbackFromState);
 });
 
 let parsedForm = JSON.parse(localStorage.getItem("feedback-from-state"));
-try {
+
+if (parsedForm !== null) {
     $form.elements.email.value = parsedForm.email;
     $form.elements.message.value = parsedForm.message;
-} catch { }
+}
